@@ -1,16 +1,37 @@
 <script lang="ts">
     import "../app.css";
+    import Header from "$lib/components/Header.svelte";
+    import MyList from "$lib/components/MyList.svelte";
 </script>
 
 <svelte:head>
     <title>Alura Cook</title>
 </svelte:head>
 
-<h1>Welcome to SvelteKit</h1>
-<p>
-    Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
-</p>
+<div class="container-main">
+    <Header />
 
-<a href="/receitas">Ir para as receitas</a>
+    <div class="style-main">
+        <div class="my-list-container">
+            <MyList />
+        </div>
+    </div>
+</div>
 
-<img src="/imagens/receitas/panqueca.png" alt="Panqueca" />
+<style>
+    .container-main {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .style-main {
+        text-align: center;
+        padding: 0 5vw 3.375rem;
+        flex: 1;
+    }
+
+    .my-list-container {
+        margin-bottom: 2rem;
+    }
+</style>
