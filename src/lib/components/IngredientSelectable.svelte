@@ -3,12 +3,10 @@
     import { myList } from "$lib/stores/myList";
     export let ingrediente: string;
 
-    let selected = false;
+    $: selected = $myList.includes(ingrediente);
 
     function handleClick() {
-        selected = !selected;
-
-        if (selected) {
+        if (!selected) {
             myList.addIngredient(ingrediente);
         } else {
             myList.removeIngredient(ingrediente);

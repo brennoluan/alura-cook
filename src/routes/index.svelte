@@ -13,14 +13,6 @@
     <title>Alura Cook</title>
 </svelte:head>
 
-{#if $myList.length}
-    <div class="my-list-container">
-        <MyList />
-
-        <div class="divider"></div>
-    </div>
-{/if}
-
 <main>
     <Title tag="h1">Ingredientes</Title>
     <div class="info">
@@ -49,17 +41,6 @@
 </main>
 
 <style>
-    .my-list-container {
-        margin-bottom: 2rem;
-    }
-
-    .divider {
-        width: 40vw;
-        height: 2px;
-        background-color: var(--verde);
-        margin: 0 auto;
-    }
-
     .info {
         margin-bottom: 3.375rem;
     }
