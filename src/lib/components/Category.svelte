@@ -15,11 +15,7 @@
     <ul class="ingredients">
         {#each category.ingredientes as ingrediente (ingrediente)}
             <li>
-                <IngredientSelectable
-                    {ingrediente}
-                    on:addIngredient
-                    on:removeIngredient
-                />
+                <IngredientSelectable {ingrediente} />
             </li>
         {/each}
     </ul>

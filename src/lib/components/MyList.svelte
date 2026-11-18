@@ -1,12 +1,12 @@
 <script lang="ts">
     import Tag from "./Tag.svelte";
-    export let ingredients: string[];
+    import { myList } from "$lib/stores/myList";
 </script>
 
 <section class="my-list">
     <h2>Sua lista:</h2>
     <ul class="my-list-items">
-        {#each ingredients as ingredient (ingredient)}
+        {#each $myList as ingredient (ingredient)}
             <li><Tag active>{ingredient}</Tag></li>
         {/each}
     </ul>

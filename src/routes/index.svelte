@@ -7,14 +7,6 @@
     import Category from "$lib/components/Category.svelte";
 
     import { myList } from "$lib/stores/myList";
-
-    function addIngredient(event: CustomEvent<string>) {
-        $myList = [...$myList, event.detail];
-    }
-
-    function removeIngredient(event: CustomEvent<string>) {
-        $myList = $myList.filter((ingredient) => ingredient !== event.detail);
-    }
 </script>
 
 <svelte:head>
@@ -23,7 +15,7 @@
 
 {#if $myList.length}
     <div class="my-list-container">
-        <MyList ingredients={$myList} />
+        <MyList />
 
         <div class="divider"></div>
     </div>
@@ -44,11 +36,7 @@
     <ul class="categories">
         {#each categories as category (category.nome)}
             <li>
-                <Category
-                    {category}
-                    on:addIngredient={addIngredient}
-                    on:removeIngredient={removeIngredient}
-                />
+                <Category {category} />
             </li>
         {/each}
     </ul>
