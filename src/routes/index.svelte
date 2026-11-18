@@ -3,6 +3,9 @@
     import Header from "$lib/components/Header.svelte";
     import MyList from "$lib/components/MyList.svelte";
     import Title from "$lib/components/Title.svelte";
+
+    import categories from "$lib/json/categorias.json";
+    import Category from "$lib/components/Category.svelte";
 </script>
 
 <svelte:head>
@@ -31,6 +34,12 @@
                     água.
                 </p>
             </div>
+
+            <ul class="categories">
+                {#each categories as category (category.nome)}
+                    <li><Category {category} /></li>
+                {/each}
+            </ul>
         </main>
     </div>
 </div>
@@ -65,5 +74,13 @@
 
     .info > p {
         line-height: 2rem;
+    }
+    .categories {
+        margin-bottom: 4.6875rem;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
     }
 </style>
