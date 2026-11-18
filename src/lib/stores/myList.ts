@@ -1,3 +1,14 @@
 import { writable } from "svelte/store";
 
-export const myList = writable<string[]>([]);
+const { subscribe, set, update } = writable<string[]>([]);
+
+export const myList = {
+    subscribe,
+    set,
+    addIngredient(ingredient: string) {
+        update(list => [...list, ingredient]);
+    },
+    removeIngredient(ingredient: string) {
+        update(list => list.filter(item => item !== ingredient));
+    }
+};
