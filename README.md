@@ -18,6 +18,9 @@ npm init svelte my-app
 
 This project uses historical SvelteKit versions for compatibility with the course.
 They have known security vulnerabilities; avoid using this setup for production.
+This version uses `src/routes/__layout.svelte` for the shared layout and
+`index.svelte` for the home page, rather than the newer `+layout.svelte` and
+`+page.svelte` conventions.
 
 Install dependencies with `npm install`, then start a development server:
 

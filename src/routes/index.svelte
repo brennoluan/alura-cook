@@ -1,22 +1,19 @@
 <script lang="ts">
-    import "../app.css";
-    import Header from "$lib/components/Header.svelte";
     import MyList from "$lib/components/MyList.svelte";
     import Title from "$lib/components/Title.svelte";
     import Tag from "$lib/components/Tag.svelte";
 
     import categories from "$lib/json/categorias.json";
     import Category from "$lib/components/Category.svelte";
-    import Footer from "$lib/components/Footer.svelte";
 
-    let myList: string[] = [];
+    import { myList } from "$lib/stores/myList";
 
     function addIngredient(event: CustomEvent<string>) {
-        myList = [...myList, event.detail];
+        $myList = [...$myList, event.detail];
     }
 
     function removeIngredient(event: CustomEvent<string>) {
-        myList = myList.filter((ingredient) => ingredient !== event.detail);
+        $myList = $myList.filter((ingredient) => ingredient !== event.detail);
     }
 </script>
 
@@ -24,66 +21,46 @@
     <title>Alura Cook</title>
 </svelte:head>
 
-<div class="container-main">
-    <Header />
+{#if $myList.length}
+    <div class="my-list-container">
+        <MyList ingredients={$myList} />
 
-    <div class="style-main">
-        {#if myList.length}
-            <div class="my-list-container">
-                <MyList ingredients={myList} />
-
-                <div class="divider"></div>
-            </div>
-        {/if}
-
-        <main>
-            <Title tag="h1">Ingredientes</Title>
-            <div class="info">
-                <p>
-                    Selecione abaixo os ingredientes que você deseja usar nesta
-                    refeição:
-                </p>
-                <p>
-                    *Atenção: consideramos que você tenha em casa sal, pimenta e
-                    água.
-                </p>
-            </div>
-
-            <ul class="categories">
-                {#each categories as category (category.nome)}
-                    <li>
-                        <Category
-                            {category}
-                            on:addIngredient={addIngredient}
-                            on:removeIngredient={removeIngredient}
-                        />
-                    </li>
-                {/each}
-            </ul>
-
-            <div class="search-revenues">
-                <a href="/receitas">
-                    <Tag active={true} size="lg">Buscar Receitas!</Tag>
-                </a>
-            </div>
-        </main>
+        <div class="divider"></div>
     </div>
-    <Footer />
-</div>
+{/if}
+
+<main>
+    <Title tag="h1">Ingredientes</Title>
+    <div class="info">
+        <p>
+            Selecione abaixo os ingredientes que você deseja usar nesta
+            refeição:
+        </p>
+        <p>
+            *Atenção: consideramos que você tenha em casa sal, pimenta e água.
+        </p>
+    </div>
+
+    <ul class="categories">
+        {#each categories as category (category.nome)}
+            <li>
+                <Category
+                    {category}
+                    on:addIngredient={addIngredient}
+                    on:removeIngredient={removeIngredient}
+                />
+            </li>
+        {/each}
+    </ul>
+
+    <div class="search-revenues">
+        <a href="/receitas">
+            <Tag active={true} size="lg">Buscar Receitas!</Tag>
+        </a>
+    </div>
+</main>
 
 <style>
-    .container-main {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .style-main {
-        text-align: center;
-        padding: 0 5vw 3.375rem;
-        flex: 1;
-    }
-
     .my-list-container {
         margin-bottom: 2rem;
     }
