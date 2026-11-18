@@ -1,13 +1,16 @@
 <script lang="ts">
     import Tag from "../../shareds/Tag.svelte";
     import { myList } from "$lib/stores/myList";
+    import MyIngredient from "./MyIngredient.svelte";
 </script>
 
 <section class="my-list">
     <h2>Sua lista:</h2>
     <ul class="my-list-items">
         {#each $myList as ingredient (ingredient)}
-            <li><Tag active>{ingredient}</Tag></li>
+            <li>
+                <MyIngredient {ingredient} />
+            </li>
         {/each}
     </ul>
 </section>
