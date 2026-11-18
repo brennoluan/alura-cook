@@ -1,15 +1,8 @@
 <script lang="ts">
     export let active: boolean = false;
-    export let selectable: boolean = false;
-
-    function onClick() {
-        if (selectable) {
-            active = !active;
-        }
-    }
 </script>
 
-<div class="tag" class:active on:click={onClick}>
+<div class="tag" class:active>
     <slot></slot>
 </div>
 

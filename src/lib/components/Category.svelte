@@ -1,6 +1,6 @@
 <script lang="ts">
     import type ICategory from "../interfaces/ICategory";
-    import Tag from "./Tag.svelte";
+    import IngredientSelectable from "./IngredientSelectable.svelte";
     export let category: ICategory;
 </script>
 
@@ -14,7 +14,9 @@
 
     <ul class="ingredients">
         {#each category.ingredientes as ingrediente (ingrediente)}
-            <li><Tag selectable={true}>{ingrediente}</Tag></li>
+            <li>
+                <IngredientSelectable {ingrediente} />
+            </li>
         {/each}
     </ul>
 </div>
