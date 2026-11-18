@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Tag from "./Tag.svelte";
+    import Tag from "../../shareds/Tag.svelte";
     import { myList } from "$lib/stores/myList";
     export let ingrediente: string;
 

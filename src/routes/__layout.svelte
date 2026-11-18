@@ -1,9 +1,9 @@
 <script lang="ts">
     import "../app.css";
-    import Footer from "$lib/components/Footer.svelte";
-    import Header from "$lib/components/Header.svelte";
+    import Footer from "$lib/components/pages/layout/Footer.svelte";
+    import Header from "$lib/components/pages/layout/Header.svelte";
     import { myList } from "$lib/stores/myList";
-    import MyList from "$lib/components/MyList.svelte";
+    import MyList from "$lib/components/pages/layout/MyList.svelte";
 </script>
 
 <div class="container-main">

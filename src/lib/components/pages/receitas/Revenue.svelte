@@ -1,16 +1,20 @@
 <script lang="ts">
-    import Card from "./Card.svelte";
+    import Card from "../../shareds/Card.svelte";
+
+    import type IRevenue from "$lib/interfaces/IRevenue";
+
+    export let revenue: IRevenue;
 </script>
 
 <Card>
     <img
-        src="/imagens/receitas/alho_assado.png"
-        alt="Alho Assado"
+        src={`/imagens/receitas/${revenue?.imagem}`}
+        alt={revenue?.nome}
         class="revenue-img"
     />
 
     <div class="revenue-info">
-        <h3 class="revenue-name">Alho Assado</h3>
+        <h3 class="revenue-name">{revenue?.nome}</h3>
     </div>
 </Card>
 

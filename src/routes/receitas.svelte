@@ -1,6 +1,15 @@
 <script>
-    import Revenue from "$lib/components/Revenue.svelte";
-    import Title from "$lib/components/Title.svelte";
+    import Title from "$lib/components/shareds/Title.svelte";
+    import Revenue from "$lib/components/pages/receitas/Revenue.svelte";
+
+    import revenues from "$lib/json/receitas.json";
+    import { myList } from "$lib/stores/myList";
+
+    $: filteredRevenues = revenues.filter((revenue) =>
+        revenue.ingredientes.every((ingrediente) =>
+            $myList.includes(ingrediente),
+        ),
+    );
 </script>
 
 <svelte:head>
@@ -11,17 +20,24 @@
     <Title tag="h1">Receitas</Title>
 
     <div class="info">
-        <p class="green">Resultados encontrados:</p>
-        <p>
-            Veja as opções de receitas que encontramos com os ingredientes que
-            você tem por aí!
-        </p>
+        <p class="green">Resultados encontrados: {filteredRevenues.length}</p>
+
+        {#if filteredRevenues.length}
+            <p>
+                Veja as opções de receitas que encontramos com os ingredientes
+                que você tem por aí!
+            </p>
+        {:else}
+            <p>Não encontramos nenhuma receita com os seus ingredientes :(</p>
+        {/if}
     </div>
 
     <ul class="revenues">
-        <li>
-            <Revenue />
-        </li>
+        {#each filteredRevenues as revenue (revenue.nome)}
+            <li>
+                <Revenue {revenue} />
+            </li>
+        {/each}
     </ul>
 </main>
 

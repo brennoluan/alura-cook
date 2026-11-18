@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type ICategory from "../interfaces/ICategory";
-    import Card from "./Card.svelte";
+    import type ICategory from "../../../interfaces/ICategory";
+    import Card from "../../shareds/Card.svelte";
     import IngredientSelectable from "./IngredientSelectable.svelte";
     export let category: ICategory;
 </script>

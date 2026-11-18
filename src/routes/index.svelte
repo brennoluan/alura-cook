@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Title from "$lib/components/Title.svelte";
-    import Tag from "$lib/components/Tag.svelte";
+    import Title from "$lib/components/shareds/Title.svelte";
+    import Tag from "$lib/components/shareds/Tag.svelte";
     import { myList } from "$lib/stores/myList";
 
     import categories from "$lib/json/categorias.json";
-    import Category from "$lib/components/Category.svelte";
+    import Category from "$lib/components/pages/index/Category.svelte";
 
     $: listEmpty = $myList.length === 0;
 
