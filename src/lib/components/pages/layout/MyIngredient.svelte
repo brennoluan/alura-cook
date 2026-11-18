@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { fade } from "svelte/transition";
     import Tag from "$lib/components/shareds/Tag.svelte";
     import { myList } from "$lib/stores/myList";
     export let ingredient: string;
@@ -8,7 +9,7 @@
     }
 </script>
 
-<div class="my-ingredient-container">
+<div class="my-ingredient-container" transition:fade={{ duration: 200 }}>
     <Tag active={true}>
         <button class="close" on:click={removeIngredient}></button>
         {ingredient}
