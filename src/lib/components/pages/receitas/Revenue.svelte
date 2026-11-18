@@ -6,7 +6,7 @@
     export let revenue: IRevenue;
 </script>
 
-<Card>
+<Card --width="300px">
     <img
         src={`/imagens/receitas/${revenue?.imagem}`}
         alt={revenue?.nome}
