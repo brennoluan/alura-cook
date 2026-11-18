@@ -1,6 +1,6 @@
 <script lang="ts">
     import Title from "$lib/components/shareds/Title.svelte";
-    import Tag from "$lib/components/shareds/Tag.svelte";
+    import TagLink from "$lib/components/shareds/TagLink.svelte";
     import { myList } from "$lib/stores/myList";
 
     import categories from "$lib/json/categorias.json";
@@ -42,11 +42,8 @@
     </ul>
 
     <div class="search-revenues">
-        <a href="/receitas">
-            <Tag active={true} size="lg" disabled={listEmpty}
-                >Buscar Receitas!</Tag
-            >
-        </a>
+        <TagLink href="/receitas" disabled={listEmpty}>Buscar receitas!</TagLink
+        >
     </div>
 </main>
 

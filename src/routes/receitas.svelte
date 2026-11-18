@@ -4,6 +4,7 @@
 
     import revenues from "$lib/json/receitas.json";
     import { myList } from "$lib/stores/myList";
+    import TagLink from "$lib/components/shareds/TagLink.svelte";
 
     $: filteredRevenues = revenues.filter((revenue) =>
         revenue.ingredientes.every((ingrediente) =>
@@ -32,13 +33,19 @@
         {/if}
     </div>
 
-    <ul class="revenues">
-        {#each filteredRevenues as revenue (revenue.nome)}
-            <li>
-                <Revenue {revenue} />
-            </li>
-        {/each}
-    </ul>
+    {#if filteredRevenues.length}
+        <ul class="revenues">
+            {#each filteredRevenues as revenue (revenue.nome)}
+                <li>
+                    <Revenue {revenue} />
+                </li>
+            {/each}
+        </ul>
+    {/if}
+
+    <div class="edit-list">
+        <TagLink href="/" disabled={false}>Editar lista</TagLink>
+    </div>
 </main>
 
 <style>
@@ -62,5 +69,10 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.5rem;
+    }
+
+    .edit-list {
+        display: flex;
+        justify-content: center;
     }
 </style>
