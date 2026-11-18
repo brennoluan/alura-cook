@@ -6,6 +6,16 @@
 
     import categories from "$lib/json/categorias.json";
     import Category from "$lib/components/Category.svelte";
+
+    let myList: string[] = [];
+
+    function addIngredient(event: CustomEvent<string>) {
+        myList = [...myList, event.detail];
+    }
+
+    function removeIngredient(event: CustomEvent<string>) {
+        myList = myList.filter((ingredient) => ingredient !== event.detail);
+    }
 </script>
 
 <svelte:head>
@@ -16,11 +26,13 @@
     <Header />
 
     <div class="style-main">
-        <div class="my-list-container">
-            <MyList />
+        {#if myList.length}
+            <div class="my-list-container">
+                <MyList ingredients={myList} />
 
-            <div class="divider"></div>
-        </div>
+                <div class="divider"></div>
+            </div>
+        {/if}
 
         <main>
             <Title tag="h1">Ingredientes</Title>
@@ -37,7 +49,13 @@
 
             <ul class="categories">
                 {#each categories as category (category.nome)}
-                    <li><Category {category} /></li>
+                    <li>
+                        <Category
+                            {category}
+                            on:addIngredient={addIngredient}
+                            on:removeIngredient={removeIngredient}
+                        />
+                    </li>
                 {/each}
             </ul>
         </main>
