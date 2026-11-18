@@ -1,5 +1,6 @@
 <script lang="ts">
     import type ICategory from "../interfaces/ICategory";
+    import Tag from "./Tag.svelte";
     export let category: ICategory;
 </script>
 
@@ -10,6 +11,12 @@
         alt={category.nome}
     />
     <h3 class="category-name">{category.nome}</h3>
+
+    <ul class="ingredients">
+        {#each category.ingredientes as ingrediente (ingrediente)}
+            <li><Tag selectable={true}>{ingrediente}</Tag></li>
+        {/each}
+    </ul>
 </div>
 
 <style>
@@ -29,5 +36,12 @@
         font-size: 1.125rem;
         color: var(--verde);
         margin-bottom: 0.875rem;
+    }
+
+    .ingredients {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem 1rem;
     }
 </style>
