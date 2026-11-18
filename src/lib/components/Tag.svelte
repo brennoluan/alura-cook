@@ -1,8 +1,9 @@
 <script lang="ts">
     export let active: boolean = false;
+    export let size: "md" | "lg" = "md";
 </script>
 
-<div class="tag" class:active>
+<div class="tag {size}" class:active>
     <slot></slot>
 </div>
 
@@ -23,5 +24,10 @@
     .active {
         color: var(--branco);
         background-color: var(--laranja);
+    }
+
+    .lg {
+        font-size: 1.125rem;
+        padding: 1rem 1.5rem;
     }
 </style>

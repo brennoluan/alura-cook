@@ -3,9 +3,11 @@
     import Header from "$lib/components/Header.svelte";
     import MyList from "$lib/components/MyList.svelte";
     import Title from "$lib/components/Title.svelte";
+    import Tag from "$lib/components/Tag.svelte";
 
     import categories from "$lib/json/categorias.json";
     import Category from "$lib/components/Category.svelte";
+    import Footer from "$lib/components/Footer.svelte";
 
     let myList: string[] = [];
 
@@ -58,8 +60,15 @@
                     </li>
                 {/each}
             </ul>
+
+            <div class="search-revenues">
+                <a href="/receitas">
+                    <Tag active={true} size="lg">Buscar Receitas!</Tag>
+                </a>
+            </div>
         </main>
     </div>
+    <Footer />
 </div>
 
 <style>
@@ -100,5 +109,10 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.5rem;
+    }
+
+    .search-revenues {
+        display: flex;
+        justify-content: center;
     }
 </style>
